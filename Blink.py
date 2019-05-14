@@ -12,6 +12,6 @@ while True:
         'postTestScore': ["25,000", "94,000", 57, 62, 70]}
     df = pd.DataFrame(raw_data, columns = ['first_name', 'last_name', 'age', 'preTestScore', 'postTestScore'])
     df
-    df.to_csv('/Py/Blink/my.csv')
+    df.to_csv('/Py/qck/my.csv')
     #df.to_csv('./my.csv')
     time.sleep(uniform(0.1,0.6))
