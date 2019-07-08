@@ -44,8 +44,8 @@ class Housing():
 if __name__ == '__main__':
     Time_start = time.time()
     #MyHouse = Housing('B1_H1_11_02_2011.csv','PriceSignal.csv')
-    MyHouse = Housing('/media/daniel/HDDfiles/Projects/CommProject/RaspberryPi/Test_2/RPi_4/B4_H4_11_02_2011.csv','/media/daniel/HDDfiles/Projects/CommProject/RaspberryPi/Test_2/RPi_4/PriceSignal.csv')
-    #MyHouse = Housing('/Py/MyHouse/B1_H1_11_02_2011.csv','/Py/MyHouse/PriceSignal.csv')
+    #MyHouse = Housing('/media/daniel/HDDfiles/Projects/CommProject/RaspberryPi/Test_2/RPi_4/B4_H4_11_02_2011.csv','/media/daniel/HDDfiles/Projects/CommProject/RaspberryPi/Test_2/RPi_4/PriceSignal.csv')
+    MyHouse = Housing('/Py/MyHouse/B3_H3_11_02_2011.csv','/Py/MyHouse/PriceSignal.csv')
 
     print('Now establishing UDP client...')
     port = 5000
