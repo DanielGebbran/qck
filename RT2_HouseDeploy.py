@@ -45,7 +45,7 @@ if __name__ == '__main__':
     Time_start = time.time()
     #MyHouse = Housing('B1_H1_11_02_2011.csv','PriceSignal.csv')
     #MyHouse = Housing('/media/daniel/HDDfiles/Projects/CommProject/RaspberryPi/Test_2/RPi_4/B4_H4_11_02_2011.csv','/media/daniel/HDDfiles/Projects/CommProject/RaspberryPi/Test_2/RPi_4/PriceSignal.csv')
-    MyHouse = Housing('/Py/MyHouse/B2_H2_11_02_2011.csv','/Py/MyHouse/PriceSignal.csv')
+    MyHouse = Housing('/Py/MyHouse/B1_H1_11_02_2011.csv','/Py/MyHouse/PriceSignal.csv')
 
     print('Now establishing UDP client...')
     port = 5000
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     
     try:
-        s.bind(('0.0.0.0',5002))
+        s.bind(('0.0.0.0',5001))
         print ("Binding at 0.0.0.0 successful! Server IP:", host)
     except:
         print ("Could not bind port!")
@@ -71,7 +71,7 @@ if __name__ == '__main__':
             Conn_Attempts = 11
             if data.decode('utf-8') == "F":
                 s.close()
-                #os.system('sudo poweroff')
+                os.system('sudo poweroff')
                 sys.exit('Input told me to turn OFF!')
             else:
                 print ("<- Received confirmation:", data.decode('utf-8'))
@@ -208,7 +208,7 @@ if __name__ == '__main__':
                 # On computer simulation, break outer loop to exit code... ? Outside function?!
                 if MyInput[1] == "F":
                     s.close()
-                    #os.system('sudo poweroff')
+                    os.system('sudo poweroff')
                     sys.exit('Input told me to turn OFF!')
             # If input is not finished, ADMM iteration follows
             else:
