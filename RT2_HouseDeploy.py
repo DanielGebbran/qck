@@ -54,7 +54,7 @@ if __name__ == '__main__':
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     
     try:
-        s.bind(('0.0.0.0',5004))
+        s.bind(('0.0.0.0',5003))
         print ("Binding at 0.0.0.0 successful! Server IP:", host)
     except:
         print ("Could not bind port!")
