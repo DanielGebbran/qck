@@ -45,8 +45,8 @@ class SubProblem:
         print("Creating models for Households with ADMM coupled problem...")
         self.HousesADMM = {}
         for i in range(100):
-            self.HousesADMM[i+1] = Shell.Housing('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/Households/'+str(i+1)+'.csv','/media/daniel/HDDfiles/Projects/CommProject/PythonImplementation/BatteryModel/PriceSignal.csv')
-            #self.HousesADMM[i+1] = Shell.Housing('/Py/Network3/Houses/'+str(i+1)+'.csv','/Py/Aggregator/PriceSignal.csv')
+            #self.HousesADMM[i+1] = Shell.Housing('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/Households/'+str(i+1)+'.csv','/media/daniel/HDDfiles/Projects/CommProject/PythonImplementation/BatteryModel/PriceSignal.csv')
+            self.HousesADMM[i+1] = Shell.Housing('/Py/Network3/Households/'+str(i+1)+'.csv','/Py/Aggregator/PriceSignal.csv')
             
         print("Rho used:", self.HousesADMM[1].HouseX.Ro, "Rho within this algorithm:", self.Ro)
         print("Finished creating models for Households with ADMM coupled problem. \nAll households built in:", time.time() - time_z, " s. \n------------")
@@ -65,8 +65,8 @@ class SubProblem:
         self.X.H = Set(initialize = self.H_set); self.X.B = Set(initialize = self.B_set); 
 
         home_buses = []
-        IDfile = open('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/Network_1/ID_Loads.csv', "r")
-        #IDfile = open('/Py/Network3/ID_Loads.csv', "r")
+        #IDfile = open('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/Network_1/ID_Loads.csv', "r")
+        IDfile = open('/Py/Network3/ID_Loads.csv', "r")
         readerID = csv.reader(IDfile)
         for row2 in readerID:
             home_buses.append(int(row2[3]))
@@ -205,10 +205,10 @@ class SubProblem:
         ## Extract admittance [Y = G + j B] 541x541 x2 matrixes from matlab file, transform each into
         # 2 lists of 541 lists.
         ###### Multiplied elements by -1 and Ignored self (11, 22, 33... on constructing B, G matlab matrixes from Y)
-        Dict_B = scipy.io.loadmat('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/B.mat')
-        Dict_G = scipy.io.loadmat('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/G.mat')
-        #Dict_B = scipy.io.loadmat('/Py/Network3/B.mat')
-        #Dict_G = scipy.io.loadmat('/Py/Network3/G.mat')
+        #Dict_B = scipy.io.loadmat('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/B.mat')
+        #Dict_G = scipy.io.loadmat('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/G.mat')
+        Dict_B = scipy.io.loadmat('/Py/Network3/B.mat')
+        Dict_G = scipy.io.loadmat('/Py/Network3/G.mat')
         
         self.M_g = Dict_B['B']
         self.M_b = Dict_G['G']
@@ -308,8 +308,8 @@ class SubProblem:
             
 if __name__ == '__main__':
         Time_start = time.time()
-        solveprob = SubProblem('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/Network_3.csv','/media/daniel/HDDfiles/Projects/CommProject/PythonImplementation/BatteryModel/PriceSignal.csv')
-        #solveprob = SubProblem('/Py/Network3.csv','/Py/Aggregator/PriceSignal.csv')
+        #solveprob = SubProblem('/media/daniel/HDDfiles/Projects/CommProject/JayssonNetwork/Network_3.csv','/media/daniel/HDDfiles/Projects/CommProject/PythonImplementation/BatteryModel/PriceSignal.csv')
+        solveprob = SubProblem('/Py/Network3/Network_3.csv','/Py/Aggregator/PriceSignal.csv')
         solveprob.solve()
 
         print('---------------------------------')
